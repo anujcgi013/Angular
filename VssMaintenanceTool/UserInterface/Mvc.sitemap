@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+  <mvcSiteMapNode title="VSS" controller="Home" action="Index" >
+    <mvcSiteMapNode title="Home" controller="Home" action="Index" />
+    <mvcSiteMapNode title="Deal" controller="Deal" action="Index">
+      <mvcSiteMapNode title="Quotation" clickable="false" />
+      <mvcSiteMapNode title="Order" clickable="false" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="User" controller="User" action="Index"/>
+    <mvcSiteMapNode title="Price List" controller="PriceList" action="Index"/>
+    <mvcSiteMapNode title="Technical Dashboard" controller="TechnicalDashboard" action="Index">
+      <mvcSiteMapNode title="Process Search" controller="TechnicalDashboard" action="Index" />
+      <mvcSiteMapNode title="Event Logs" clickable="false" />
+      <mvcSiteMapNode title="Integration Messages" clickable="false" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Admin Tools" controller="TechnicalDashboard" action="Index">
+      <mvcSiteMapNode title="Admin Tools" controller="Administration" action="MessageBoard" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

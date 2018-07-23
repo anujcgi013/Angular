@@ -1,0 +1,50 @@
+﻿@model Volvo.MaintenanceTool.UserInterface.Models.IntegrationMessageModel
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Intergration Message - @Html.DisplayFor(m => m.Id)</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-2 col-sm-4">
+                    @Html.LabelFor(m => m.MessageType, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-sm-8">
+                    @Html.TextBoxFor(m => m.MessageType, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-2 col-sm-4">
+                    @Html.LabelFor(m => m.Status, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-sm-8">
+                    @Html.TextBoxFor(m => m.Status, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-2 col-sm-4">
+                    @Html.LabelFor(m => m.System, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-sm-8">
+                    @Html.TextBoxFor(m => m.System, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-2 col-sm-4">
+                    @Html.LabelFor(m => m.TimeStamp, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-4 col-sm-8">
+                    @Html.TextBoxFor(m => m.TimeStamp, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:20px;">
+                <div class="col-md-2 col-sm-4">
+                    @Html.LabelFor(m => m.Message, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-10 col-sm-8">
+                    @Html.TextAreaFor(m => m.Message, new { @class = "form-control input-lg col-sm-8", @readonly = "readonly", @style="height:100px;"})
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

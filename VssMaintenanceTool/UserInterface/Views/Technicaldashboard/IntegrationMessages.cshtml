@@ -1,0 +1,144 @@
+﻿@model Volvo.MaintenanceTool.UserInterface.Models.IntegrationMessageSearchModel
+
+@{
+    ViewBag.Title = "IntegrationMessages";
+}
+
+@section styles{
+    <link href="@Url.Content("~/Content/technicaldashboard.css")" rel="stylesheet" />
+    <style type="text/css">
+        .k-grid td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.Id)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.MessageType)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(x => Model.MessageType, new SelectList(Model.MessageTypeEnumList, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "MessageType" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.Status)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(x => Model.Status, new SelectList(Model.StatusEnumList, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "Status" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.System)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.DropDownListFor(x => Model.System, new SelectList(Model.SystemEnumList, "Value", "Text"), htmlAttributes: new { @class = "form-control", @id = "System" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.Message)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.Message, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.StartTimeStamp)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.StartTimeStamp, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.EndTimeStamp)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.EndTimeStamp, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-2 col-sm-6 pull-left">
+                    <div class="row">
+                        <div class="col-md-12" style="height:15px;">
+
+                        </div>
+                        <div class="col-md-12">
+                            <input id="btnSearchIntegrationMessage" class="btn btn-primary pull-left" value="Search" type="button" name="btnSearchIntegrationMessage" />
+                        </div>
+                    </div>
+                </div>*@
+                <div class="col-md-2 col-sm-6 pull-left">
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top:15px;">
+                            <input id="btnSearchIntegrationMessage" class="btn btn-primary pull-left" value="Search" type="button" name="btnSearchIntegrationMessage" />
+                            <input id="btnClear" class="btn btn-primary pull-right" value="Clear" type="button" name="btnClear" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="grid" style="font:small-caption;"></div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="output">
+    </div>
+</div>
+
+<div style="display:none;" data-url="@Url.Action("GetIntegrationMessage", "TechnicalDashBoard")" id="UrlGetIntegrationMessage"></div>
+<div style="display:none;" data-url="@Url.Action("GetIntegrationMessageDetail", "TechnicalDashBoard")" id="UrlGetIntegrationMessageDetail"></div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#StartTimeStamp").kendoDateTimePicker({
+                value: null,
+                dateInput: true
+            });
+            $("#EndTimeStamp").kendoDateTimePicker({
+                value: null,
+                dateInput: true
+            });
+            GetIntegrationMessage();
+        });
+    </script>
+    <script src="@Url.Content("~/Scripts/technicaldashboard.integrationmessage.js")" type="text/javascript"></script>
+    @*<script type="text/javascript">
+        GetIntegrationMessage();
+</script>*@
+
+}

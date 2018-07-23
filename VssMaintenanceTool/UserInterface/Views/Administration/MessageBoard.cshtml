@@ -1,0 +1,170 @@
+﻿@model Volvo.MaintenanceTool.UserInterface.Models.MaintenanceInformationSearchModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "MessageBoard";
+}
+
+@section styles{
+    <link href="@Url.Content("~/Content/technicaldashboard.css")" rel="stylesheet" />
+}
+<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.ValidFrom)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.ValidFrom, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.ValidTo)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.ValidTo, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.Header)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.Header, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.Message)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.Message, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.CreatedBy)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.CreatedBy, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3" style="margin-top:15px;">
+                            <input id="btnSearchMessageInfo" class="btn btn-primary" value="Search" type="button" onclick="messageBoardhelper.SearchMessages()" name="btnSearchMessageInfo" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3" style="margin-top:15px;">
+                            <input id="btnSaveMessage" class="btn btn-primary" value="Save" type="button" onclick="messageBoardhelper.SaveMessageBoard()" name="btnSaveMessage" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-2">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3" style="margin-top:15px;">
+                            <input id="btnClear" class="btn btn-primary" value="Clear" type="button" name="btnClear" />
+                        </div>
+                    </div>
+                </div>
+                <div style="color:green;font-weight:bold;margin-top:15px;" id="messageSuccess"></div>
+                <div style="color:red;font-weight:bold;margin-top:15px;" id="messageError">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="grid" style="font:small-caption;"></div>
+</div>
+@using (Ajax.BeginForm("MessageBoard_updateMessage", "Administration", new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "frmMessage" }))
+{
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="output">
+        </div>
+    </div>
+}
+
+@section scripts{
+    <script type="text/javascript">
+ $(document).ready(function () {
+            messageBoardhelper.init('@Url.Action("MessageBoard_getAllMessage", "Administration")', '@Url.Action("MessageBoard_saveMessage","Administration")', '@Url.Action("MessageBoard_displayMessage", "Administration")', '@Url.Action("MessageBoard_updateMessage", "Administration")');
+
+            function setInitial() {
+                $("#test").addClass('hidden');
+                $("#partialview").addClass('hidden');
+
+            }
+
+            function startChange() {
+                var startDate = start.value(),
+                endDate = end.value();
+
+                if (startDate) {
+                    startDate = new Date(startDate);
+                    startDate.setDate(startDate.getDate());
+                    end.min(startDate);
+                } else if (endDate) {
+                    start.max(new Date(endDate));
+                } else {
+                    endDate = new Date();
+                    start.max(endDate);
+                    end.min(endDate);
+                }
+            }
+
+            function endChange() {
+                var endDate = end.value(),
+                startDate = start.value();
+
+                if (endDate) {
+                    endDate = new Date(endDate);
+                    endDate.setDate(endDate.getDate());
+                    start.max(endDate);
+                } else if (startDate) {
+                    end.min(new Date(startDate));
+                } else {
+                    endDate = new Date();
+                    start.max(endDate);
+                    end.min(endDate);
+                }
+            }
+
+            var today = kendo.date.today();
+
+            var start = $("#ValidFrom").kendoDateTimePicker({
+                //value: today,
+                change: startChange,
+                //parseFormats: ["MM/dd/yyyy"]
+            }).data("kendoDateTimePicker");
+
+            var end = $("#ValidTo").kendoDateTimePicker({
+                //value: today,
+                change: endChange,
+                //parseFormats: ["MM/dd/yyyy"]
+            }).data("kendoDateTimePicker");
+
+            // start.max(end.value());
+            end.min(start.value());
+
+            messageBoardhelper.SearchMessages();
+
+});
+    </script>
+}
