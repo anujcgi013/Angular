@@ -1,0 +1,68 @@
+﻿@model List<Volvo.MaintenanceTool.UserInterface.Models.ChartDataModel>
+<div id="chart"></div>
+@section scripts{
+    <script>
+    function createChart() {
+        $("#chart").kendoChart({
+            title: {
+                text: "DEAL / ORDER TRENDS"
+            },
+            legend: {
+                position: "top"
+            },
+            seriesDefaults: {
+                type: "line",
+                style: "smooth"
+            },
+            series: [
+                {
+                    name: "DEALS",
+                    data: [
+                        @foreach (var item in Model)
+                    {
+                        @item.QuoteCount.ToString()@:,
+                    }
+                    ]
+                },
+                {
+                    name: "ORDERS",
+                    data: [
+                        @foreach (var item in Model)
+                    {
+                        @item.OrderCount.ToString()@:,
+                    }
+                    ]
+                }
+            ],
+            valueAxis: {
+                labels: {
+                    format: "{0}"
+                },
+                line: {
+                    visible: false
+                }
+            },
+            categoryAxis: {
+                categories: [
+                    @foreach (var item in Model)
+                    {
+                        var date = "";
+                        date = (item.Created.AsDateTime().Day + "" + item.Created.AsDateTime().Month + "" + item.Created.AsDateTime().Year).ToString();
+                        @date@:,
+                    }
+                ],
+                majorGridLines: {
+                    visible: true
+                }
+            },
+            tooltip: {
+                visible: true,
+                format: "{0}",
+                template: "#= series.name #: #= value #"
+            }
+        });
+    }
+    $(document).ready(createChart);
+
+    </script>
+}

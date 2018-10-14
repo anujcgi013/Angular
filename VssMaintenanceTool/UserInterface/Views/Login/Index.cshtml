@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "";
+}
+<style>
+    .loginLogo {
+     float:left;   
+    }
+    .loginTbl{
+        float:right;
+    }
+    .divmain {
+        position: absolute;
+        top: 30%;
+        left: 30%;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(192, 192, 192);
+        padding: 5px;
+    }
+</style>
+@using (Html.BeginForm())
+{
+<div class="divmain">
+    <div class="loginLogo">
+        <img src="~/Content/Images/LoginLogo.jpg" />
+    </div>
+
+    <table class="loginTbl">
+        <tr>
+            <td>Baldo UserId</td>
+            <td><input type="text" name="txtUserName" id="=txtuserName" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Login" /></td>
+        </tr>
+    </table>
+</div>
+}

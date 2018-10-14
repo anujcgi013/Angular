@@ -1,0 +1,352 @@
+﻿@model Volvo.VSSMaintenance.UserDomain.DomainLayer.Entities.RUSettingsInfo
+
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="myModalLabel">Detail for RU Settings Id - @Html.DisplayFor(m => m.RUSettingsId)</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row" style="margin-bottom:2px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.RUSettingsId, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.RUSettingsId, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.OrganisationId, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.OrganisationId, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ActivateQuotedFlow, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ActivateQuotedFlow, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.VATFactorPercentage, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.VATFactorPercentage, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.QuotePrefix, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.QuotePrefix, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.QuoteSuffix, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.QuoteSuffix, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.CalculationModel, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.CalculationModel, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.CalculationModelTradeInFlag, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.CalculationModelTradeInFlag, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.GDSOrderFile, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.GDSOrderFile, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.OMOrderFile, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.OMOrderFile, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.AdministratorId, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.AdministratorId, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.OrderFileType, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.OrderFileType, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ObjVersion, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ObjVersion, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.UseRUSignerInDoc, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.UseRUSignerInDoc, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.UseTitleInDoc, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.UseTitleInDoc, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ExtraSalePercentage, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ExtraSalePercentage, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.PrivateDealer, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.PrivateDealer, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.DefaultLanguage, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.DefaultLanguage, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.IMAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.IMAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.CMAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.CMAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.WISPerfAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.WISPerfAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.FCAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.FCAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.CQOnlineAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.CQOnlineAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.SAMAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.SAMAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.VATFactorTradeIn, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.VATFactorTradeIn, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.UTSAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.UTSAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ManualTradeIn, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ManualTradeIn, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.AvailableVehicleContactName, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.AvailableVehicleContactName, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.AvailableVehicleContactEMail, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.AvailableVehicleContactEMail, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.AvailableVehicleContactPhone, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.AvailableVehicleContactPhone, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.CoPilotAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.CoPilotAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ShowLocalCostWithoutSalesPrice, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ShowLocalCostWithoutSalesPrice, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.UseRUinDocument, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.UseRUinDocument, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.IncludeHeader, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.IncludeHeader, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.IncludeFooter, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.IncludeFooter, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ShowVersion, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ShowVersion, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ShowAlternative, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ShowAlternative, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.Active, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.Active, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.VatIncludedByDefault, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.VatIncludedByDefault, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.IncludeOverAllowanceToSalesPrice, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.IncludeOverAllowanceToSalesPrice, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.TruckFinderAccess, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.TruckFinderAccess, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.IncludeCustomerSigner, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.IncludeCustomerSigner, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.SplitOrderToGDS, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.SplitOrderToGDS, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ExternalCounterNumber, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ExternalCounterNumber, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.ShowDecimals, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.ShowDecimals, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.FooterType, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.FooterType, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="row" style="margin-bottom:5px;">
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.PriceCalculationType, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.PriceCalculationType, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.LabelFor(m => m.DoNotDisplayVatTax, null, new { @class = "control-label" })
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    @Html.TextBoxFor(m => m.DoNotDisplayVatTax, null, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+

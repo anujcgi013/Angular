@@ -1,0 +1,142 @@
+﻿@model Volvo.MaintenanceTool.UserInterface.Models.UserOrganisationSearchModel
+@{
+    ViewBag.Title = "Index";
+}
+
+@section styles{
+    <link href="@Url.Content("~/Views/Technicaldashboard/technicaldashboard.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/technicaldashboard.css")" rel="stylesheet" />  
+}
+<div class="container-fluid">
+    <div class="jumbotron">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.BaldoUserId)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.BaldoUserId, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.FirstName)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.SurName)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.SurName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.UserId)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.UserId, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.OrganisationId)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.OrganisationId, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.RUSettingsId)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.RUSettingsId, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.CDBPartyId)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.CDBPartyId, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.LegalName)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.LegalName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.DisplayNameFor(model => model.CommonName)
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(model => model.CommonName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6 pull-left">
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top:15px;">
+                            <input id="btnSearchUserOrganisationInfo" class="btn btn-primary pull-left" value="Search" type="button" name="btnSearchUserOrganisationInfo" />
+                            <input id="btnClear" class="btn btn-primary pull-right" value="Clear" type="button" name="btnClear" />
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-2 col-sm-6 pull-left">
+                    <div class="row">
+                        <div class="col-md-12" style="height:15px;">
+                        </div>
+                        <div class="col-md-12">
+                            <input id="btnSearchUserOrganisationInfo" class="btn btn-primary pull-left" value="Search" type="button" name="btnSearchUserOrganisationInfo" />
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+    <div id="grid" style="font:small-caption;"></div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="output">
+    </div>
+</div>
+<div style="display:none;" data-url="@Url.Action("GetUserOrganisationInfo", "User")" id="UrlGetUserOrganisationInfo"></div>
+<div style="display:none;" data-url="@Url.Action("GetUserDetail", "User")" id="UrlGetUserDetail"></div>
+<div style="display:none;" data-url="@Url.Action("GetOrganisationDetail", "User")" id="UrlGetOrganisationDetail"></div>
+<div style="display:none;" data-url="@Url.Action("GetRUSettingsDetail", "User")" id="UrlGetRUSettingsDetail"></div>
+
+@section scripts{
+<script type="text/javascript">
+        $(document).ready(function () {
+            GetUserOrganisationInfo();
+        });
+    </script>
+    <script src="@Url.Content("~/Scripts/user.userorganisationinfo.js")" type="text/javascript"></script>
+}

@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "CalendarUpload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="k-header"><h2>Calendar Upload</h2></div>
+<hr />
+
+<div class="container">
+
+    <div id="container">
+        @* <form action='@Url.Action("Calendar_uploadCalendar")' method="post" enctype="multipart/form-data">*@
+        @*<form method="post" action='@Url.Action("Calendar_uploadCalendar")'>*@
+        <div class="row">
+            <div class="col-md-12" style="height:20px"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 k-label"><h4>Market Id:</h4></div>
+            <div class="col-md-4">
+                <div class="demo-section k-content" style="width: 100%">
+                    <input id="markets" style="width: 100%" />
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4 demo-section k-content">
+            </div>
+            <div class="col-md-4  k-content">
+                <input name="file" id="files" type="file" />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 demo-section k-content">
+            </div>
+            <div class="col-md-4 demo-section k-content">
+                <p style="padding-top: 1em; text-align: right">
+                    <button type="submit" class="k-button k-primary" onclick="calendarHelper.uploadCalendar()" id="btnuploadCalendar">Upload Calendar</button>
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+    @*</form>*@
+
+</div>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+
+            calendarHelper.init('@Url.Action("Calendar_uploadCalendar", "Administration")')
+
+            var url = "@Url.Action("Calendar_GetAllMarkets", "Administration")";
+
+            $("#markets").kendoDropDownList({
+                dataTextField: "Description",
+                dataValueField: "MarketId",
+                dataSource: {
+                    transport: {
+                        read: {
+                            dataType: "json",
+                            url: url,
+                        }
+                    }
+                }
+
+
+            });
+
+            //$("#files").kendoUpload({
+            //    multiple: false,
+            //    files: initialFiles,
+            //    success: onSuccess
+            //});
+
+
+
+        });
+
+    </script>
+}

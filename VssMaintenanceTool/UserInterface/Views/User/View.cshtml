@@ -1,0 +1,17 @@
+﻿@model  Volvo.VSSMaintenance.UserDomain.DomainLayer.Entities.User
+@{
+    ViewBag.Title = "View";
+}
+<div class="jumbotron">
+    <h2>View User Details For The Record</h2>
+    </div>
+<div class="tblStructure">
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">@Html.LabelFor(m => m.BaldoUserId)</div>
+        <div class="col-md-4 col-sm-4 col-xs-4">@Html.LabelFor(m => m.FirstName)</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">@Html.DisplayFor(m => m.BaldoUserId)</div>
+        <div class="col-md-4 col-sm-4 col-xs-4">@Html.DisplayFor(m => m.FirstName)</div>
+    </div>
+</div>

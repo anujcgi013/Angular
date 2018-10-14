@@ -1,0 +1,59 @@
+﻿
+@{ 
+    var obj = ViewBag.searchCriteria;
+}
+
+
+@(Html.Kendo().Grid<Volvo.MaintenanceTool.UserInterface.Models.ProcessInstanceSearchModel>()
+                    .Name("tblProcessInstance")
+                    //.Events(events => events.Change("Grid_OnRowSelect"))
+                    .EnableCustomBinding(false)
+            .Columns(columns =>
+            {
+                columns.Bound(p => p.ProcessId);
+                columns.Bound(p => p.State);
+                columns.Bound(p => p.Status);
+                columns.Bound(p => p.InterfaceName);
+                columns.Bound(p => p.FIFOTag);
+                columns.Bound(p => p.StartDate).Format("{0:MM/dd/yyyy h:mm:ss tt}");
+                columns.Bound(p => p.EndDate).Format("{0:MM/dd/yyyy h:mm:ss tt}");
+                columns.Bound(p => p.FIFOTag2);
+            })
+            //.Scrollable()
+            .Pageable(x => x.PageSizes(new List<object> { 10, 20, 100, "all" }).Refresh(true))
+            .Resizable(resize => resize.Columns(true))
+            .HtmlAttributes(new { style = "height:100%; margin-left:1%; margin-right:1%; font:small-caption;" })
+            .Sortable()
+            .Selectable()
+            .DataSource(dataSource => dataSource
+            .Ajax()
+            .ServerOperation(false)
+            .Read(read => read.Action("SearchProcessDeatils", "TechnicalDashBoard").Data("additionalInfo"))
+     )
+)
+<script type="text/javascript">
+    @*var Grid_OnRowSelect = function (e) {
+        var data = this.dataItem(this.select());
+        processId = data.ProcessId;
+        SearchEventLogByProcessId(processId);
+    }
+
+    function SearchEventLogByProcessId(processId) {
+        processId=$.trim(processId.replace(/(\r\n|\n|\r)/gm, ""));
+        $.ajax({
+            type: "POST", url: '@Url.Content("~/TechnicalDashBoard/SearchEventLogByProcessId/")', data : {'id': processId},
+            dataType: "json", traditional: true
+        });
+        return;
+    }*@
+
+    function additionalInfo() {
+    var searchCriteria = obj;
+    return {
+    searchCriteria : searchCriteria
+    }
+}
+</script>
+
+
+
