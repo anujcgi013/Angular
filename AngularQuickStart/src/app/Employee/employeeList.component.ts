@@ -1,21 +1,30 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
+import { IEmployee } from './Employee'
+import { EmployeeService } from './employee.service'
 
 @Component({
     selector: 'list-employee',
     templateUrl: 'app/Employee/employeeList.component.html',
-    styleUrls: ['app/Employee/employeeList.component.css']
+    styleUrls: ['app/Employee/employeeList.component.css'],
+    providers: [EmployeeService]
 })
-export class EmployeeListComponent {
-    employees: any[];
+export class EmployeeListComponent implements OnInit {
+    employees: IEmployee[];
+    selectedEmployeeRadioButton: string = "All";
+    statusMessage: string = "Loading Data, Please Wait....";
 
-    constructor() {
-        this.employees = [
-            { code: 'emp101', name: 'Anuj1', gender: 'Female', Salary: 44000 },
-            { code: 'emp102', name: 'Anuj2', gender: 'Female', Salary: 42000 },
-            { code: 'emp103', name: 'Anuj3', gender: 'Male', Salary: 43000 },
-            { code: 'emp104', name: 'Anuj4', gender: 'Male', Salary: 45000 },
-            { code: 'emp105', name: 'Anuj5', gender: 'Female', Salary: 46000 }
-        ];
+    constructor(private _employeeSerives: EmployeeService) {
+
+    }
+
+    ngOnInit(): void {
+        this._employeeSerives.getEmployee()
+            .subscribe((employeeData) => this.employees = employeeData,
+                (error) => { this.statusMessage = "Error in service, please try again..." });
+    }
+
+    onEmployeeCountRadioButtonChange(selectedRadioButton: string): void {
+        this.selectedEmployeeRadioButton = selectedRadioButton;
     }
 
     getAllEmployeeCount(): number {

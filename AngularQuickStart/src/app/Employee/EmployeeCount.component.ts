@@ -8,10 +8,10 @@
 
 export class EmployeeCountComponent {
 
-    selectRadioButtonValue: string = "All";
+    selectedRadioButtonValue: string = "All";
 
     @Output()
-    countRadioButtonSelectionChanged: EventEmitter<string> = new EventEmitter<string>();
+    countRadioButtonSelectionChanged = new EventEmitter<string>();
 
     @Input()
     all: number;
@@ -23,6 +23,7 @@ export class EmployeeCountComponent {
     female: number;
 
     onRadioButtonSelectionChanged() {
-        this.countRadioButtonSelectionChanged.emit(this.selectRadioButtonValue);
+        this.countRadioButtonSelectionChanged.emit(this.selectedRadioButtonValue);
+        console.log(this.selectedRadioButtonValue);
     }
 } 

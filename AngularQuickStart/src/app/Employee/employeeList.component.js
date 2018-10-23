@@ -10,16 +10,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var employee_service_1 = require("./employee.service");
 var EmployeeListComponent = /** @class */ (function () {
-    function EmployeeListComponent() {
-        this.employees = [
-            { code: 'emp101', name: 'Anuj1', gender: 'Female', Salary: 44000 },
-            { code: 'emp102', name: 'Anuj2', gender: 'Female', Salary: 42000 },
-            { code: 'emp103', name: 'Anuj3', gender: 'Male', Salary: 43000 },
-            { code: 'emp104', name: 'Anuj4', gender: 'Male', Salary: 45000 },
-            { code: 'emp105', name: 'Anuj5', gender: 'Female', Salary: 46000 }
-        ];
+    function EmployeeListComponent(_employeeSerives) {
+        this._employeeSerives = _employeeSerives;
+        this.selectedEmployeeRadioButton = "All";
+        this.statusMessage = "Loading Data, Please Wait....";
     }
+    EmployeeListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this._employeeSerives.getEmployee()
+            .subscribe(function (employeeData) { return _this.employees = employeeData; }, function (error) { _this.statusMessage = "Error in service, please try again..."; });
+    };
+    EmployeeListComponent.prototype.onEmployeeCountRadioButtonChange = function (selectedRadioButton) {
+        this.selectedEmployeeRadioButton = selectedRadioButton;
+    };
     EmployeeListComponent.prototype.getAllEmployeeCount = function () {
         return this.employees.length;
     };
@@ -33,9 +38,10 @@ var EmployeeListComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'list-employee',
             templateUrl: 'app/Employee/employeeList.component.html',
-            styleUrls: ['app/Employee/employeeList.component.css']
+            styleUrls: ['app/Employee/employeeList.component.css'],
+            providers: [employee_service_1.EmployeeService]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [employee_service_1.EmployeeService])
     ], EmployeeListComponent);
     return EmployeeListComponent;
 }());

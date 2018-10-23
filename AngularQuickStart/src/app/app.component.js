@@ -9,17 +9,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
+        this.userText = 'Anuj';
+        //onclick(): void {
+        //    console.log('Button Clicked');
+        //}
     }
-    AppComponent.prototype.onclick = function () {
-        console.log('Button Clicked');
-    };
     AppComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n                     <list-employee></list-employee>\n              "
+            selector: "my-app",
+            template: "<list-employee></list-employee>"
         })
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+//Your Text: <input type="text"[(ngModel)] = "userText" />
+//    <br/>
+//    < simple[simpleInput]="userText" > </simple>
 //# sourceMappingURL=app.component.js.map

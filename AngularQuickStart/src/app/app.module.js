@@ -8,18 +8,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var http_1 = require("@angular/http");
+var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var employee_component_1 = require("./Employee/employee.component");
 var employeeList_component_1 = require("./Employee/employeeList.component");
 var EmployeeCount_component_1 = require("./Employee/EmployeeCount.component");
 var Employeelistpipe = require("./Employee/employeelist.pipe");
 var employeeListPipe = Employeelistpipe.EmployeeListPipe;
+//import { SimpleComponent } from "./Other/Simple.component"]
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule],
             declarations: [app_component_1.AppComponent, employee_component_1.EmployeeComponent, employeeList_component_1.EmployeeListComponent, employeeListPipe, EmployeeCount_component_1.EmployeeCountComponent],
             bootstrap: [app_component_1.AppComponent]
         })

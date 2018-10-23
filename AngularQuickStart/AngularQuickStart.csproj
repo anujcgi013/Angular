@@ -148,11 +148,15 @@
     <TypeScriptCompile Include="src\app\app.component.ts" />
     <TypeScriptCompile Include="src\app\app.module.ts" />
     <TypeScriptCompile Include="src\app\Employee\employee.component.ts" />
+    <TypeScriptCompile Include="src\app\Employee\employee.service.ts" />
+    <TypeScriptCompile Include="src\app\Employee\employee.ts" />
     <TypeScriptCompile Include="src\app\Employee\EmployeeCount.component.ts" />
     <TypeScriptCompile Include="src\app\Employee\employeeList.component.ts" />
     <TypeScriptCompile Include="src\app\Employee\employeelist.pipe.ts" />
+    <TypeScriptCompile Include="src\app\Other\simple.component.ts" />
     <TypeScriptCompile Include="src\main.ts" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
